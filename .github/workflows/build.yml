@@ -12,11 +12,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install XcodeGen
-        run: brew install xcodegen
-
       - name: Generate Project
-        run: xcodegen generate
+        run: |
+          curl -sL https://github.com/yonaskolb/XcodeGen/releases/latest/download/xcodegen.zip -o xcodegen.zip
+          unzip xcodegen.zip
+          ./xcodegen generate
 
       - name: Build
         run: xcodebuild -project EliteIPA.xcodeproj -scheme EliteIPA -configuration Release build
