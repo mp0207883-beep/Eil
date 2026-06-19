@@ -16,6 +16,7 @@ jobs:
         run: |
           curl -sL https://github.com/yonaskolb/XcodeGen/releases/latest/download/xcodegen.zip -o xcodegen.zip
           unzip xcodegen.zip
+          chmod +x xcodegen
           ./xcodegen generate
 
       - name: Build
