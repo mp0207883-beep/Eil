@@ -1,13 +1,22 @@
-name: EliteIPA
-options:
-  bundleId: com.elite.ipa
-  deploymentTarget:
-    iOS: 15.0
+name: Build Elite IPA
 
-targets:
-  EliteIPA:
-    type: application
-    platform: iOS
-    sources: .
-    info:
-      path: Info.plist
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate Project
+        run: |
+          brew install xcodegen
+          xcodegen generate
+
+      - name: Build
+        run: |
+          xcodebuild -project EliteIPA.xcodeproj -scheme EliteIPA -configuration Release build
