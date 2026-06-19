@@ -19,4 +19,6 @@ jobs:
 
       - name: Build
         run: |
-          xcodebuild -project EliteIPA.xcodeproj -scheme EliteIPA -configuration Release build
+          # العثور على اسم الـ Scheme تلقائياً
+          scheme=$(xcodebuild -list | grep "Scheme:" | head -n 1 | awk '{print $2}')
+          xcodebuild -project EliteIPA.xcodeproj -scheme "$scheme" -configuration Release build
