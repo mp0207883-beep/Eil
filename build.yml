@@ -1,0 +1,13 @@
+name: EliteIPA
+options:
+  bundleId: com.elite.ipa
+  deploymentTarget:
+    iOS: 15.0
+
+targets:
+  EliteIPA:
+    type: application
+    platform: iOS
+    sources: .
+    info:
+      path: Info.plist
