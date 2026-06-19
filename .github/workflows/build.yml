@@ -12,8 +12,5 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: List project files
-        run: ls -R
-
-      - name: Build project
-        run: xcodebuild -list
+      - name: List all files in the repository
+        run: find . -maxdepth 3 -name "*.xcodeproj" -o -name "*.xcworkspace"
